@@ -29,4 +29,9 @@ class RatingTest < ActiveSupport::TestCase
     rating = Rating.new(score: 9)
     assert rating.promoter?
   end
+
+  test 'promoter? returns false if score is less than 9' do
+    rating = Rating.new(score: 1)
+    assert_not rating.promoter?
+  end
 end
