@@ -4,6 +4,6 @@ class Rating < ApplicationRecord
   validates :score, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
 
   def promoter?
-    score < 9 ? false : true
+    score > 9
   end
 end
