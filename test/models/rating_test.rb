@@ -42,10 +42,17 @@ class RatingTest < ActiveSupport::TestCase
     assert_not rating.promoter?
   end
 
-   test 'passive? returns true if score is 7 or 8' do
+  test 'passive? returns true if score is 7 or 8' do
     7.upto(8).each do |i|
       rating = Rating.new(score: i)
       assert rating.passive?
+    end
+  end
+
+  test 'passive? returns false if score is less than 7' do
+    0.upto(6).each do |i|
+      rating = Rating.new(score: i)
+      assert_not rating.passive?
     end
   end
 end
